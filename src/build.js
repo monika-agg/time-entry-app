@@ -14,17 +14,17 @@ const compilerPromise = (name, compiler) => {
       if (!stats.hasErrors()) {
         return resolve()
       }
-      return reject(`Failed to compile ${name}`)
+      return reject(`Failed to compile ${name}`, stats)
     })
   })
 }
 
 process.on('uncaughtException', function (err) {
-  console.log('Uncaught Exception', err.message, err.stack)
+  console.log('Uncaught Exception', err, err.message, err.stack)
 })
 
 process.on('unhandledRejection', function (err) {
-  console.log('Uncaught Rejection', err.message, err.stack)
+  console.log('Uncaught Rejection', err, err.message, err.stack)
 })
 
 const build = async () => {
