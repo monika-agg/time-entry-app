@@ -14,7 +14,7 @@ function writeCookie(key, value, opts) {
 function cookieOptions(time) {
   const options = {
     path: '/',
-    domain: `localhost`
+    domain: `.herokuapp.com`
   }
 
   if (time) {
