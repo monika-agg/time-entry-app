@@ -3,7 +3,7 @@ import cookie from 'cookie'
 export function cookieOptions(time) {
   const options = {
     path: '/',
-    domain: `.herokuapp.com`
+    http: false
   }
 
   if (time) {
