@@ -19,6 +19,14 @@ const compilerPromise = (name, compiler) => {
   })
 }
 
+process.on('uncaughtException', function (err) {
+  console.log('Uncaught Exception', err.message, err.stack)
+})
+
+process.on('unhandledRejection', function (err) {
+  console.log('Uncaught Rejection', err.message, err.stack)
+})
+
 const build = async () => {
   rimraf.sync(paths.dist)
   const multiCompiler = webpack([clientConfig, serverConfig])

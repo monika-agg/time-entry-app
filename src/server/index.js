@@ -62,14 +62,6 @@ app.use((req, res, next) => {
 })
 app.use(render);
 
-process.on('uncaughtException', function (err) {
-  console.log('Uncaught Exception', err.message, err.stack)
-})
-
-process.on('unhandledRejection', function (err) {
-  console.log('Uncaught Rejection', err.message, err.stack)
-})
-
 let port = process.env.PORT || 8500
 app.listen(port, () => {
   console.log(`Server started on PORT ${port}`)
