@@ -41,18 +41,14 @@ const build = async () => {
     if (!error && !stats.hasErrors()) {
       console.log(stats.toString(clientConfig.stats))
     }
-    if (error) {
-      console.log("client error", error)
-    }
+    console.log("client error", stats)
   })
 
   serverCompiler.watch({}, (error, stats) => {
     if (!error && !stats.hasErrors()) {
       console.log(stats.toString(serverConfig.stats))
     }
-    if (error) {
-      console.log("server error", error)
-    }
+    console.log("server error", stats)
   })
 
   try {
