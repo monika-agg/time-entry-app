@@ -14,7 +14,7 @@ coverage
 stuff
 # dist/
 # dist/**/*.*
-src/shared/configureFirebase.js
+# src/shared/configureFirebase.js
 yarn-error.log
 tmp
 .idea/*
