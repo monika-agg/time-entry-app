@@ -46,7 +46,7 @@ const build = async () => {
     await serverPromise
     process.exit()
   } catch (error) {
-    console.log(error, 'error')
+    console.log(error, 'sdkldhaldjq')
     process.exit(1)
   }
 }
