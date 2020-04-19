@@ -57,6 +57,7 @@ const devConfig = {
   mode: 'development',
   name: 'server',
   target: 'node',
+  devtool: 'source-map',
   entry: {
     bundle: [`${paths.src}/server/index.js`]
   },

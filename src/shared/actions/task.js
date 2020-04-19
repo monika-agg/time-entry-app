@@ -27,7 +27,6 @@ export const fetchList = () => (dispatch) => {
         childData.endTime = new Date(childData.endTime)
         entries[childKey] = childData
       })
-      console.log("@@@@@@@@@", entries)
       dispatch({ type: 'TASKLIST', payload: entries })
       resolve(entries)
     })

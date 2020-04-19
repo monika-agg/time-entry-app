@@ -3,11 +3,12 @@ import firebase from 'shared/configureFirebase'
 export const login = (email, password) => (dispatch, getState, { setCookie }) => {
   return firebase.auth().signInWithEmailAndPassword(email, password)
     .then(user => {
-      dispatch({ type: 'LOGIN', payload: { loggedIn: true } })
-      return firebase.auth().currentUser.getIdToken().then(token => {
+      
+      return firebase.auth().currentUser.getIdToken(true).then(token => {
         // dispatch({ type: 'TOKEN_RETRIVED_SUCCESS', payload: { token } })
         setCookie('token', token)
-      }).catch(error => { })
+        dispatch({ type: 'LOGIN', payload: { loggedIn: true } })
+      })
     })
     .catch(error => {
       let errorMessage
@@ -42,7 +43,6 @@ export const register = (email, password) => (dispatch) => {
 }
 
 export const signOut = () => (dispatch, getState, { clearCookie }) => {
-  console.log("helper", clearCookie)
   return firebase.auth().signOut().then(() => {
     clearCookie('token')
     dispatch({ type: 'LOGIN', payload: { loggedIn: false } })

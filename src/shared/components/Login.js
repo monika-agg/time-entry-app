@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react'
 import { login, register } from 'shared/actions/auth'
 import connect from 'shared/connect'
 import Header from 'src/shared/components/Header'
+// import PageWrap from 'src/shared/components/PageWrap'
 import { loginContainer, loginBtn, errorStyle } from 'src/shared/components/style'
 
 const SCREEN = {
@@ -9,7 +10,8 @@ const SCREEN = {
   LOGIN: 'login'
 }
 
-const AuthComponent = ({ login, register, errorMessage }) => {
+const AuthComponent = (props = {}) => {
+  const { login, register, errorMessage } = props
   const [{ email = '', password = '' }, setState] = useState({})
   const [screen, setScreen] = useState(SCREEN.LOGIN)
 
@@ -21,8 +23,11 @@ const AuthComponent = ({ login, register, errorMessage }) => {
   }
 
   function onSubmit() {
+    const {history} = props
     if (screen === SCREEN.LOGIN) {
-      login(email, password)
+      login(email, password).then(_ => {
+        history.push('/')
+      })
     } else {
       register(email, password).then(status => {
         if (status === 'success') {

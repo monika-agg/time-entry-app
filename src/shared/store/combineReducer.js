@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux'
-import { authReducer, appReducer, cookieReducer } from 'shared/reducers'
+import { authReducer, appReducer, cookieReducer, routeReducer } from 'shared/reducers'
 
 export default combineReducers({
   auth: authReducer,
   data: appReducer,
-  cookies: cookieReducer
+  cookies: cookieReducer,
+  route: routeReducer
 })

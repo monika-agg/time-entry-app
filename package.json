@@ -5,17 +5,19 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prestart:debug": "yarn",
-    "start:debug": "NODE_ENV=development node ./src/start.js",
+    "start:debug": "NODE_ENV=development DEBUG_MODE=true node --harmony ./src/start.js",
     "build": "NODE_ENV=production node ./src/build.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@babel/core": "^7.7.2",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/preset-env": "^7.7.1",
     "@babel/preset-react": "^7.7.0",
     "@emotion/babel-preset-css-prop": "^10.0.23",
     "@emotion/core": "^10.0.22",
+    "@loadable/babel-plugin": "^5.12.0",
     "@loadable/component": "^5.10.3",
     "@loadable/server": "^5.10.3",
     "@loadable/webpack-plugin": "^5.7.1",

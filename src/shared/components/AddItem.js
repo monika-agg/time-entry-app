@@ -1,10 +1,21 @@
 import React, { useState, useRef, Fragment } from 'react'
+import PageWrapper from './PageWapper'
 import { createEntry } from 'shared/actions/task'
 import connect from 'shared/connect'
 import PrintTask from './PrintTask'
 import {timer, loginContainer, loginBtn} from 'src/shared/components/style'
-
-const AddItem = ({ createEntry, projectList }) => {
+const PageType = 'ADDITEM'
+const initialList = [{
+  key: 'project1',
+  label: 'project 1'
+}, {
+  key: 'project2',
+  label: 'project 2'
+}, {
+  key: 'project3',
+  label: 'project 3'
+}]
+const AddItem = ({ createEntry, projectList = initialList }) => {
   const [{ name = '', project = '', started = false }, set] = useState({})
   const [{ startTime, count = 0 }, setTime] = useState({})
   const [taskList, setTaskList] = useState([])
@@ -70,4 +81,4 @@ const AddItem = ({ createEntry, projectList }) => {
 }
 
 const props = () => ({})
-export default connect({ props, actions: { createEntry } })(AddItem)
+export default connect({ props, actions: { createEntry } })(PageWrapper(PageType)(AddItem))

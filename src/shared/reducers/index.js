@@ -20,6 +20,17 @@ export const appReducer = (state = {}, { type, payload }) => {
   return state
 }
 
+export const routeReducer = (state = {}, { type, payload }) => {
+  const { params = {}, search, query, ...rest } = payload || {}
+  switch (type) {
+    case 'UPDATE_ROUTE_PARAMS':
+      const prevState = { ...state }
+      delete prevState.prev
+      return { prev: { ...prevState }, ...rest, params, search, query }
+  }
+  return state
+}
+
 export const cookieReducer = (state = {}, { type, payload }) => {
   switch (type) {
     case 'SET_COOKIES':

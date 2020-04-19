@@ -14,9 +14,10 @@ export const checkLogin = () => (dispatch, getState) => {
     cookies: { token }
   } = getState()
   if (!token) {
-    return Promise.resolve({})
+    return Promise.resolve({loggedIn : false})
   } else {
     dispatch({ type: 'LOGIN', payload: { loggedIn: true } })
+    return Promise.resolve({loggedIn: true})
   }
   // else {
   //   return admin.auth().verifyIdToken(token).then((decodedToken) => {

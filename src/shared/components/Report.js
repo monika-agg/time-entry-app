@@ -3,6 +3,9 @@ import connect from 'shared/connect'
 import TaskFilter from './TaskFilter'
 import { fetchList } from 'shared/actions/task'
 import PrintTask from './PrintTask'
+import PageWrapper from './PageWapper'
+
+const PageType = 'REPORT'
 
 const Report = ({ fetchList }) => {
   const [task, setTask] = useState([])
@@ -35,4 +38,4 @@ const Report = ({ fetchList }) => {
 
 }
 
-export default connect({ actions: { fetchList } })(Report)
+export default connect({ actions: { fetchList } })(PageWrapper(PageType)(Report))

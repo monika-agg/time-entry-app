@@ -37,7 +37,6 @@ const start = async () => {
   clientConfig.output.hotUpdateChunkFilename = 'updates/[id].[hash].hot-update.js'
 
   const publicPath = clientConfig.output.publicPath
-  console.log("@@@@@@@@@@@@@@", publicPath)
   clientConfig.output.publicPath = [`http://localhost:${WEBPACK_PORT}`, publicPath]
     .join('/')
     .replace(/([^:+])\/+/g, '$1/')
@@ -87,12 +86,23 @@ const start = async () => {
     console.log(error, 'error')
   }
   console.log("paths.buildServer", paths.buildServer)
-  nodemon(
-    `--delay 100ms --ignore "src scripts config ./*.* " ' --inspect' ${paths.buildServer}/server.js`
+  const script = nodemon(
+    `--delay 100ms --ignore "src scripts config ./*.*" --inspect ${paths.buildServer}/server.js`
   )
-  // shell.exec(
-  //   `node --delay 100ms ${process.env.DEBUG_MODE ? ' --inspect' : ''} ${paths.buildServer}/server.js`
-  // 
+
+  script.on('restart', () => {
+    console.log('Server side app has been restarted.', 'warning')
+  })
+
+  script.on('quit', () => {
+    console.log('Process ended')
+    process.exit()
+  })
+
+  script.on('error', () => {
+    console.log('An error occured. Exiting', 'error')
+    process.exit(1)
+  })
 }
 
 start()

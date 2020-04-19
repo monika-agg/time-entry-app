@@ -6,6 +6,7 @@ import configureStore from '../shared/store';
 import { getCookieHelpers } from './cookies'
 import App from '../shared/App';
 import { createBrowserHistory } from 'history'
+import Routes from 'shared/route'
 const history = createBrowserHistory();
 const helpers = {}
 const store = window.store || configureStore(window.__INITIAL_STATE__, helpers);
@@ -19,7 +20,7 @@ helpers.syncCookies = syncCookies
 hydrate(
   <Provider store={store}>
     <Router history={history}>
-      <App />
+      <App routes={Routes}/>
     </Router>
   </Provider>
   , document.getElementById('app'))

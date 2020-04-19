@@ -65,7 +65,7 @@ const devConfig = {
     bundle: [`${paths.src}/client/index.js`]
   },
   output: {
-    path: paths.dist,
+    path: path.join(paths.dist, '/client'),
     filename: 'bundle.js',
     chunkFilename: '[name].[chunkhash:8].js',
     publicPath: paths.publicPath

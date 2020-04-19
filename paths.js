@@ -10,7 +10,7 @@ var pathList = {
   buildServer: getPathFromRoot('./dist/server'),
   src: getPathFromRoot('./src'),
   dist: getPathFromRoot('./dist'),
-  stats: getPathFromRoot('dist/loadable-stats.json'),
+  stats: getPathFromRoot('dist/client/loadable-stats.json'),
   publicPath: '/',
   prodPublicPath: '/static/'
   // assets: getPathFromRoot('./src/assets')

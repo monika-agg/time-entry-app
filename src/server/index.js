@@ -60,6 +60,11 @@ app.use((req, res, next) => {
   store.dispatch({ type: 'SET_COOKIES', payload: cookies })
   next()
 })
+app.use((req, res, next) => {
+  const path = req.path
+  res.locals.path = path
+  next()
+})
 app.use(render);
 
 let port = process.env.PORT || 8500
