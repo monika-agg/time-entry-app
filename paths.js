@@ -10,6 +10,7 @@ var pathList = {
   buildServer: getPathFromRoot('./dist/server'),
   src: getPathFromRoot('./src'),
   dist: getPathFromRoot('./dist'),
+  nodeModules: getPathFromRoot('./node_modules'),
   stats: getPathFromRoot('dist/client/loadable-stats.json'),
   publicPath: '/',
   prodPublicPath: '/static/'

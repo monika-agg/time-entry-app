@@ -60,7 +60,7 @@ const devConfig = {
   mode: 'development',
   name: 'client',
   target: 'web',
-  devtool: 'source-map',
+  devtool: 'nosources-source-map',
   entry: {
     bundle: [`${paths.src}/client/index.js`]
   },
@@ -68,7 +68,8 @@ const devConfig = {
     path: path.join(paths.dist, '/client'),
     filename: 'bundle.js',
     chunkFilename: '[name].[chunkhash:8].js',
-    publicPath: paths.publicPath
+    publicPath: paths.publicPath,
+    devtoolModuleFilenameTemplate: 'http://localhost:8500/[resource]'
   },
   module: {
     rules: [
